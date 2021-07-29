@@ -11,10 +11,14 @@ class Azkar extends Model
     protected $table   ='alazkar';
     protected $guarded = [];
 
+    const AZKAR_SABAH      = 1;
+    const AZKAR_MASAA      = 2;
+    const AZKAR_ALNOOM     = 3;
+
     public function getazkar(){ 
-        $azkar = [ 1 => 'اذكار الصباح',
-                   2 => 'اذكار المساء', 
-                   3 => 'اذكار النوم'];
+        $azkar = [ self::AZKAR_SABAH => 'اذكار الصباح',
+                   self::AZKAR_MASAA => 'اذكار المساء', 
+                   self::AZKAR_ALNOOM => 'اذكار النوم'];
          
         return $azkar[$this->type];    
     }
