@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\alsalawat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\sendActivateCode;
@@ -55,7 +56,7 @@ class admin_dashboardcontroller extends Controller
             $admin->assignRole($role);
             }
             
-        return 'good';
+       return redirect()->route('admin.add')->with(['success'=> 'Admin Add Succesfully']);
         }
 
     public function showaAmins(){
@@ -65,14 +66,22 @@ class admin_dashboardcontroller extends Controller
     public function deleteAmins($id){
         $admin = Admin::find($id);
         if(!$admin){
-            return 'not found this admin';
+            return back();
         }
         $admin->delete();
         return back();
     }
+    /// ----------------------------------------------///
+    
+    /// ---------------------Users ----------------//
     public function addUser(){
         return view('admin.users.Add_user');
     }
+
+    public function showusers(){
+        $users = User::select('id','first_name','second_name','email','mobile')->get();
+        return  view('admin.users.show_users', compact('users'))->with(['var' => 1]);
+    }   
 
     public function storeUser(add_user_request $request){
       try{
@@ -114,7 +123,26 @@ class admin_dashboardcontroller extends Controller
             return 'Done';
     }
     
-    public function logout(Request $request)
+    public function deleteusers($id){
+        $user = User::find($id);
+        if(!$user){
+            return back();
+        }
+        $user->delete();
+        return back();
+    }
+     // ------------------------------------------------------------------------- //
+
+     public function alsalawat(){
+        $alsalawat = alsalawat::select('id','type','alfard','alsonna_before','alsonna_after')->get();
+        return view('admin.Alsalawat.alsalawat', compact('alsalawat'))->with(['var' => 1]);
+     }
+    
+    public function questions(){
+        return view('admin.questions.questions');
+    }
+    
+     public function logout(Request $request)
     {
     Auth::logout();
 

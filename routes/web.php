@@ -27,13 +27,18 @@ Route::namespace('App\Http\Controllers\Admin')->group(function(){
       Route::get ('delete-admins/{id}', "admin_dashboardcontroller@deleteAmins")->name('admin.delete');
       
       Route::get('add-user', "admin_dashboardcontroller@addUser")->name('admin.add.user');
+      Route::get('show-user', "admin_dashboardcontroller@showusers")->name('show.user');
       Route::post('store-user', "admin_dashboardcontroller@storeUser")->name('admin.store.user');
       Route::post('storephoto', 'admin_dashboardcontroller@storePhoto')->name('store.photo');
+      Route::get('delete/user/{id}', 'admin_dashboardcontroller@deleteusers')->name('delete.user');
+      
+       // Alazkar //
+       Route::get('azkarsabah', 'alAzkarController@azkarsabah')->name('azkar.sabah');
+       Route::get('azkarmasaa', 'alAzkarController@azkarmasaa')->name('azkar.masaa');
+       Route::get('azkarnoom', 'alAzkarController@azkarnoom')->name('azkar.nooom');
+       
+       Route::get('alsalawat', 'admin_dashboardcontroller@alsalawat')->name('alsalawat');
+       Route::get('questions', 'admin_dashboardcontroller@questions')->name('questions');
     });
-
-    // Alazkar //
-      Route::get('azkarsabah', 'alAzkarController@azkarsabah')->name('azkar.sabah');
-      Route::get('azkarmasaa', 'alAzkarController@azkarmasaa')->name('azkar.masaa');
-      Route::get('azkarnoom', 'alAzkarController@azkarnoom')->name('azkar.nooom');
 
   });

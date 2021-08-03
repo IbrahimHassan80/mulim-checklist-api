@@ -29,7 +29,22 @@ class alsalawat extends Model
         ];
         return $salah[$this->type];
     }
-   
+    
+    public function getTypeAttribute($val){
+        if($val == 1){
+            return 'صلاة الفجر';
+        } elseif ($val == 2){
+            return 'صلاة الضحى';
+        } elseif ($val == 3){
+            return 'صلاة الظهر';
+        } elseif ($val == 4){
+            return 'صلاة العصر';
+        } elseif ($val == 5){
+            return 'صلاة المغرب';
+        } elseif ($val == 6){
+            return 'صلاة العشاء';
+        }
+    }
    
     // public static function test()
     // {
