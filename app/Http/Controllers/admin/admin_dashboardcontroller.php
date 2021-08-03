@@ -9,10 +9,14 @@ use App\Http\Requests\adminLoginRequest;
 use App\Http\Requests\Add_admin_request;
 use App\Http\Requests\add_user_request;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use App\Models\Admin;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\sendActivateCode;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 class admin_dashboardcontroller extends Controller
 {
@@ -71,12 +75,23 @@ class admin_dashboardcontroller extends Controller
     }
 
     public function storeUser(add_user_request $request){
-       
+      try{
         $request['password']  = Hash::make($request->password);
+        $request->request->add(['activate_code' => Str::random(5)]);
+        
+        DB::beginTransaction();
         $user = User::create($request->all());
         if($user)
+        $data = ['activecode' => $user->activate_code];
+        Mail::To($user->email)->send(new sendActivateCode($data));
+        DB::commit();
         return redirect()->route('admin.add.user')->with(['success'=> 'User Save Succesfully']);
+      } catch(\Exception $ex){
+        DB::rollback();
+        return $ex;
+      }
     }
+
     public function storePhoto(Request $request){
         $rules = [
             'photo' => 'required',

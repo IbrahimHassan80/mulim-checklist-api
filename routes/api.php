@@ -25,8 +25,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('App\Http\Controllers\Resource')->group(function(){
     /// User ///
-    Route::post('store-user-api', "authcontroller@storeUser")->name('admin.store.user.api');
-    Route::post('login-user-api', "authcontroller@loginUser")->name('admin.login.user.api');
+    Route::post('/store-user-api', "authcontroller@storeUser")->name('admin.store.user.api');
+    Route::post('/login-user-api', "authcontroller@loginUser")->name('admin.login.user.api');
+    Route::post('/forget-password', "authcontroller@forgetpassword")->name('admin.forget.password');
+    Route::post('/forget-password-code', "authcontroller@forgetPasswordCode")->name('forget.password,code');
+    Route::post('/change-forget-password/{code}', "authcontroller@changeForgetPassword")->name('forget.password,change');
     
     Route::middleware(['auth:sanctum'])->group(function () {
     //Alazkaar //
