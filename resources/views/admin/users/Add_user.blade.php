@@ -51,11 +51,4 @@
 </div>
 @endif
 <br><br>
-
-<form id="tow" action="{{route('store.photo')}}" enctype="multipart/form-data" method="POST">
-@csrf
-<label for="">choose photo</label>
-<input type="file" name="photo">
-<button>save</button>
-</form>
 @endsection
