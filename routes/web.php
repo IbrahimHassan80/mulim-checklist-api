@@ -14,31 +14,30 @@ use Illuminate\Support\Facades\Route;
 */
 Route::namespace('App\Http\Controllers\Admin')->group(function(){
     Route::middleware(['guest:admin'])->group(function(){
-      Route::get ('/admin-login', "admin_dashboardcontroller@adminLogin")->name('admin.login');
-      Route::post('/check-admin-login', "admin_dashboardcontroller@checkAdminLogin")->name('check.admin.login');
+      Route::get ('/admin-login', "AdminDashboardController@adminLogin")->name('admin.login');
+      Route::post('/check-admin-login', "AdminDashboardController@checkAdminLogin")->name('check.admin.login');
     });
     
     Route::middleware(['auth:admin'])->group(function(){
-      Route::get ('/', "admin_dashboardcontroller@dashboard")->middleware('auth:admin')->name('admin.dashboard');
-      Route::get ('/admin-logout', "admin_dashboardcontroller@logout")->name('admin.logout');
-      Route::get ('add-admins', "admin_dashboardcontroller@addAdmin")->name('admin.add')->middleware('role:Super admin');
-      Route::post('store-admins', "admin_dashboardcontroller@storeAdmin")->name('admin.store');
-      Route::get ('show-admins', "admin_dashboardcontroller@showaAmins")->name('admin.show');
-      Route::get ('delete-admins/{id}', "admin_dashboardcontroller@deleteAmins")->name('admin.delete');
+      Route::get ('/', "AdminDashboardController@dashboard")->name('admin.dashboard');
+      Route::get ('/admin-logout', "AdminDashboardController@logout")->name('admin.logout');
+      Route::get ('add-admins', "AdminDashboardController@addAdmin")->name('admin.add')->middleware('role:Super admin');
+      Route::post('store-admins', "AdminDashboardController@storeAdmin")->name('admin.store');
+      Route::get ('show-admins', "AdminDashboardController@showaAmins")->name('admin.show');
+      Route::get ('delete-admins/{id}', "AdminDashboardController@deleteAmins")->name('admin.delete');
       
-      Route::get('add-user', "admin_dashboardcontroller@addUser")->name('admin.add.user');
-      Route::get('show-user', "admin_dashboardcontroller@showusers")->name('show.user');
-      Route::post('store-user', "admin_dashboardcontroller@storeUser")->name('admin.store.user');
-      Route::post('storephoto', 'admin_dashboardcontroller@storePhoto')->name('store.photo');
-      Route::get('delete/user/{id}', 'admin_dashboardcontroller@deleteusers')->name('delete.user');
+      Route::get('add-user', "AdminDashboardController@addUser")->name('admin.add.user');
+      Route::get('show-user', "AdminDashboardController@showusers")->name('show.user');
+      Route::post('store-user', "AdminDashboardController@storeUser")->name('admin.store.user');
+      Route::post('storephoto', 'AdminDashboardController@storePhoto')->name('store.photo');
+      Route::get('delete/user/{id}', 'AdminDashboardController@deleteusers')->name('delete.user');
       
        // Alazkar //
        Route::get('azkarsabah', 'alAzkarController@azkarsabah')->name('azkar.sabah');
        Route::get('azkarmasaa', 'alAzkarController@azkarmasaa')->name('azkar.masaa');
        Route::get('azkarnoom', 'alAzkarController@azkarnoom')->name('azkar.nooom');
        
-       Route::get('alsalawat', 'admin_dashboardcontroller@alsalawat')->name('alsalawat');
-       Route::get('questions', 'admin_dashboardcontroller@questions')->name('questions');
+       Route::get('alsalawat', 'AdminDashboardController@alsalawat')->name('alsalawat');
     });
 
   });

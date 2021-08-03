@@ -17,9 +17,11 @@ use App\Models\alsalawat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\sendActivateCode;
+use Illuminate\Auth\Events\Attempting;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-class admin_dashboardcontroller extends Controller
+
+class AdminDashboardController extends Controller
 {
     
     public function dashboard(){

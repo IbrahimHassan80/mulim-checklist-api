@@ -45,16 +45,4 @@ class alsalawat extends Model
             return 'صلاة العشاء';
         }
     }
-   
-    // public static function test()
-    // {
-    //     return [
-    //         self::TYPE_al3eshaa => 'ewr'
-    //     ];
-    // }
-
-    // public function typeText()
-    // {
-    //     return self::test()[$this->type];
-    // }
 }
