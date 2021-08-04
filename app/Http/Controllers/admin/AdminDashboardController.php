@@ -25,11 +25,11 @@ class AdminDashboardController extends Controller
 {
     
     public function dashboard(){
-        return view('admin.dashboard');
+        return view('Admin.dashboard');
     }
 
     public function adminLogin(){
-        return view('admin.login.login');
+        return view('Admin.login.login');
     }
 
     public function checkAdminLogin(adminLoginRequest $request){
@@ -44,7 +44,7 @@ class AdminDashboardController extends Controller
 
     public function addAdmin(){
         $roles = Role::select('id','name')->get();
-        return view('admin.Admins.Add_admins', compact('roles'));
+        return view('Admin.Admins.Add_admins', compact('roles'));
     }
 
     public function storeAdmin(Add_admin_request $request){
@@ -63,7 +63,7 @@ class AdminDashboardController extends Controller
 
     public function showaAmins(){
         $admins = Admin::select('id', 'name', 'email')->get();
-        return  view('admin.Admins.show_admins', compact('admins'))->with(['var' => 1]);
+        return  view('Admin.Admins.show_admins', compact('admins'))->with(['var' => 1]);
     }    
     public function deleteAmins($id){
         $admin = Admin::find($id);
@@ -77,12 +77,12 @@ class AdminDashboardController extends Controller
     
     /// ---------------------Users ----------------//
     public function addUser(){
-        return view('admin.users.Add_user');
+        return view('Admin.users.Add_user');
     }
 
     public function showusers(){
         $users = User::select('id','first_name','second_name','email','mobile')->get();
-        return  view('admin.users.show_users', compact('users'))->with(['var' => 1]);
+        return  view('Admin.users.show_users', compact('users'))->with(['var' => 1]);
     }   
 
     public function storeUser(add_user_request $request){
@@ -90,12 +90,12 @@ class AdminDashboardController extends Controller
         $request['password']  = Hash::make($request->password);
         $request->request->add(['activate_code' => Str::random(5)]);
         
-        DB::beginTransaction();
+       // DB::beginTransaction();
         $user = User::create($request->all());
         if($user)
-        $data = ['activecode' => $user->activate_code];
-        Mail::To($user->email)->send(new sendActivateCode($data));
-        DB::commit();
+       // $data = ['activecode' => $user->activate_code];
+       // Mail::To($user->email)->send(new sendActivateCode($data));
+       // DB::commit();
         return redirect()->route('admin.add.user')->with(['success'=> 'User Save Succesfully']);
       } catch(\Exception $ex){
         DB::rollback();
@@ -137,11 +137,11 @@ class AdminDashboardController extends Controller
 
      public function alsalawat(){
         $alsalawat = alsalawat::select('id','type','alfard','alsonna_before','alsonna_after')->get();
-        return view('admin.Alsalawat.alsalawat', compact('alsalawat'))->with(['var' => 1]);
+        return view('Admin.Alsalawat.alsalawat', compact('alsalawat'))->with(['var' => 1]);
      }
     
     public function questions(){
-        return view('admin.questions.questions');
+        return view('Admin.questions.questions');
     }
     
      public function logout(Request $request)

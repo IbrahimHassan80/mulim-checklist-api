@@ -9,15 +9,15 @@ class alAzkarController extends Controller
 {
     public function azkarsabah(){
         $azkar = Azkar::select('title','content','count')->where('type', 1)->get();
-        return view('admin.alazkar.azkarsabah', compact('azkar'));
+        return view('Admin.Alazkar.azkarsabah', compact('azkar'));
     }
     public function azkarmasaa(){
         $azkar = Azkar::select('title','content','count')->where('type', 2)->get();
-        return view('admin.alazkar.azkarmasaa', compact('azkar'));
+        return view('Admin.Alazkar.azkarmasaa', compact('azkar'));
     }
     
     public function azkarnoom(){
         $azkar = Azkar::select('title','content','count')->where('type', 3)->get();
-        return view('admin.alazkar.azkarnoom', compact('azkar'));
+        return view('Admin.Alazkar.azkarnoom', compact('azkar'));
     }
 }
