@@ -20,7 +20,7 @@ use App\Mail\sendActivateCode;
 use Illuminate\Auth\Events\Attempting;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-/// hello 
+/// thank
 class AdminDashboardController extends Controller
 {
     
