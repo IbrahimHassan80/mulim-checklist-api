@@ -12,7 +12,7 @@
     <title>SB Admin 2 - Login</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{asset('admin-theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css')}}">
+    <link href="{{asset('admin-theme/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet"  type="text/css">
     <link href="https://fonts.googleapis.com/?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
@@ -70,12 +70,7 @@
                                         <button class="btn btn-primary btn-user btn-block">login</button>
                                         <hr>
                                         
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
+                                        
                                     </form>
                                     
                                     <hr>
