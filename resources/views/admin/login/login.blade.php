@@ -17,7 +17,9 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('admin-theme/css/sb-admin-2.min.css')}}" rel="stylesheet">
-
+    <style>
+        .bg-login-image{background-image: url({{asset('admin-theme/img/islam.jpg')}})}
+    </style>
 </head>
 
 <body class="bg-gradient-primary">
