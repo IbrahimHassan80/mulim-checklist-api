@@ -1,4 +1,6 @@
 @extends('admin.layout.master')
+
+@section('title','Alsalawat')
 @section('content')
 
 <table class="table">
@@ -23,5 +25,4 @@
      @endforeach
     </tbody>
   </table>
-
 @stop

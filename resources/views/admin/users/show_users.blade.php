@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('title','Show Users')
 @section('content')
 
 <table class="table">
@@ -21,8 +22,8 @@
         <td>{{$user->email}}</td>
         <td>{{$user->mobile}}</td>
         <td>
-            <a class="btn btn-danger" href="{{route('delete.user', $user->id)}}">{{__('messages.delete')}}</a>
-            <a class="btn btn-primary" href="{{route('edit.user', $user->id)}}">{{__('messages.edit')}}</a>
+          <a class="btn btn-primary" href="{{route('edit.user', $user->id)}}">{{__('messages.edit')}}</a>
+          <a class="btn btn-danger" href="{{route('delete.user', $user->id)}}">{{__('messages.delete')}}</a>
         </td>
       </tr>
      @endforeach

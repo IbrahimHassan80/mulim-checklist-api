@@ -1,15 +1,11 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
     <!-- Sidebar Toggle (Topbar) -->
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
     </button>
 
-
-
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
-
         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
         <li class="nav-item dropdown no-arrow d-sm-none">
             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -33,10 +29,9 @@
                 </form>
             </div>
         </li>
-
         <!-- Nav Item - Alerts -->
         
-        {{-- LANGUAGE selet --}}
+        {{-- LANGUAGE selet button--}}
         @if(App::isLocale('en'))
         <a style="height: 50px; margin-top: 8px; margin-right: 8px; padding-top:11px;" class="btn btn-primary" href="{{route('changeLang', 'ar')}}">{{__('messages.arabic')}}</a>
         @else
@@ -63,10 +58,7 @@
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     {{__('messages.log_out')}}
                 </a>
-           
             </div>
         </li>
-
     </ul>
-
 </nav>

@@ -15,6 +15,7 @@ class contactuscontroller extends Controller
         ];
        
         $validator = validator::make($request->all(), $rules);
+
         if($validator->fails()){
                 return response()->json([
                     'message' => 'the given data was invalid',
@@ -25,7 +26,7 @@ class contactuscontroller extends Controller
         $contact = Contactus::create([
             'message' => $request->message,
         ]);
-        return "good";
-    
+        return "tahnk you for your message";
+
     }
 }

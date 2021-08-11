@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('title','Add Users')
 @section('content')
 
 <form class="col-md-8" method="POST" action="{{route('admin.store.user')}}">

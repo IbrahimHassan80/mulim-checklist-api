@@ -29,15 +29,15 @@ class usercontroller extends Controller
         $request->photo->move($path, $file_name);
         $user = User::where('id', auth()->user()->id)->update(['photo' => $file_name]);
         if($user)
-            return 'Done';
+            return 'Photo changed succeffully';
     }
 
     public function deletePhoto(){
         if(File::exists(public_path('project/users/' . auth()->user()->photo))){
            File::delete(public_path('project/users/' . auth()->user()->photo));}  
-        $user = User::where('id', auth()->user()->id)->update(['photo' => null]);
-        if($user)
-         return 'deleted';
+            $user = User::where('id', auth()->user()->id)->update(['photo' => null]);
+            if($user)
+             return 'photo deleted';
     }
 
     public function changePassword(Request $request){
@@ -48,20 +48,19 @@ class usercontroller extends Controller
         $validator = validator::make($request->all(), $rules);  
         if($validator->fails()){
             return response()->json([
-                'message' => 'the given data was invalid',
-                'errNum' => 500,
-                'error' => $validator->errors(),
-       ]);
+              'message' => 'the given data was invalid',
+              'errNum' => 500,
+              'error' => $validator->errors(),]);
          } 
     
-         $user = auth()->user();
-          if(Hash::check($request->current_password, $user->password)){
-            $update = $user->update([
-                'password' => bcrypt($request->new_password)]);
-              if($update)
-                return 'Done';
-    } else {
-        return 'old password is wrong';
+        $user = auth()->user();
+         if(Hash::check($request->current_password, $user->password)){
+           $update = $user->update([
+             'password' => bcrypt($request->new_password)]);
+            if($update)
+              return 'password change succefully';
+          } else {
+            return 'old password is wrong';
     }
 }
 }

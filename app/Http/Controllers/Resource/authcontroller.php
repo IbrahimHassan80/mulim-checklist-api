@@ -36,12 +36,14 @@ class authcontroller extends Controller
        
         $request['password']  = Hash::make($request->password);
         $request->request->add(['activate_code' => Str::random(5)]);
+
         DB::beginTransaction();
         $user = User::create($request->all());
         if($user){
         $data = ['activecode' => $user->activate_code];
         Mail::To($user->email)->send(new sendActivateCode($data));
         DB::commit();
+        
         $token=$user->createToken('my-app-token')->plainTextToken;
         $respons=[
             'user'   => $user,
@@ -50,6 +52,7 @@ class authcontroller extends Controller
         ];
         return $respons;
         }
+
     } catch(\Exception $ex){
         DB::rollback();
         return response()->json([
@@ -100,7 +103,6 @@ class authcontroller extends Controller
                     'error' => $validator->errors(),
                 ]); }
         
-                
         $user = User::where('email', $request->email)->first();
         if($user){
             DB::beginTransaction();
@@ -136,6 +138,7 @@ class authcontroller extends Controller
                     'errNum' => 500,
                     'error' => $validator->errors(),
                 ]); }
+
         $user = User::where('password_reset_code', $request->code)->first();
         if(!$user){
             return response()->json([
@@ -155,7 +158,8 @@ class authcontroller extends Controller
    public function changeForgetPassword(Request $request, $code){
         $rules = [
             'password' => 'required|confirmed|min:6',];
-            $validator = validator::make($request->all(), $rules);   
+            $validator = validator::make($request->all(), $rules);  
+             
             if($validator->fails()){
                 return response()->json([
                     'message' => 'the given data was invalid',

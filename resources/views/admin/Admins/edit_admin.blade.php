@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('title','Edit Admins')
 @section('content')
 
 <form class="col-md-8" method="POST" action="{{route('admin.store.edit', $admin->id)}}">
@@ -27,16 +28,17 @@
         @enderror
     </div>
     
-    <div class="mb-3">
+  <div class="mb-3">
     <label for="role" style="font-weight: bold">{{__('messages.role')}}</label>
     <select name="role[]" id="role" class="form-select" multiple aria-label="multiple select example">
       @foreach($roles as $role)
       <option value="{{$role->id}}">{{$role->name}}</option>
       @endforeach
     </select>
-    </div>
-      <button type="submit" class="btn btn-primary">{{__('messages.save')}}</button>
+  </div>
+    <button type="submit" class="btn btn-primary">{{__('messages.save')}}</button>
 </form>
+
 <br>
 <h2>{{__('messages.role')}}</h2>
 {{-- Roles  --}}
@@ -49,9 +51,11 @@
         {{$role}} <button class="btn btn-danger">{{__('messages.delete')}}</button>
     </div>
   </form>
+
       @empty
       <div class="alert alert-secondary col-md-3" role="alert">{{__('messages.no_role')}}</div>
 @endforelse
+
 {{-- ------- --}}
 @if(Session::has('success'))
 <div class="alert alert-success" role="alert">

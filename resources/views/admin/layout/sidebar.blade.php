@@ -13,7 +13,6 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-  
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -39,11 +38,12 @@
             <a class="collapse-item" href="{{route('admin.add')}}">{{__('messages.add_admins')}}</a>
             <a class="collapse-item" href="{{route('admin.show')}}">{{__('messages.show_admins')}}</a>
         </div>
-        
+
     </div>
 </li>
    @endrole
     
+   @role('admin')
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
         aria-expanded="true" aria-controls="collapseUtilities">
@@ -59,7 +59,7 @@
         </div>
     </div>
 </li>
-
+@endrole
 
 <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"

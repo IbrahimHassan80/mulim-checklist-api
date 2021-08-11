@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('title','Show Admins')
 @section('content')
 
 <table class="table">
@@ -17,12 +18,11 @@
         <td>{{$admin->name}}</td>
         <td>{{$admin->email}}</td>
         <td>
-            <a class="btn btn-danger" href="{{route('admin.delete', $admin->id)}}">{{__('messages.delete')}}</a>
-            <a class="btn btn-primary" href="{{route('admin.edit', $admin->id)}}">{{__('messages.edit')}}</a>
+          <a class="btn btn-primary" href="{{route('admin.edit', $admin->id)}}">{{__('messages.edit')}}</a>
+          <a class="btn btn-danger" href="{{route('admin.delete', $admin->id)}}">{{__('messages.delete')}}</a>
         </td>
       </tr>
      @endforeach
     </tbody>
   </table>
-
 @stop

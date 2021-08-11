@@ -59,12 +59,10 @@ class AdminDashboardController extends Controller
             'password' => Hash::make($request->password),
         ]);
         if($request->role){
-            $role = Role::findMany([$request->role]);
             $admin->syncRoles([$request->role]);
             }
-            
        return redirect()->route('admin.add')->with(['success'=> trans('messages.saved_successfully')]);
-        }
+    }
 
     public function showaAmins(){
         $admins = Admin::select('id', 'name', 'email')->get();
@@ -78,30 +76,29 @@ class AdminDashboardController extends Controller
         $roles = Role::select('id','name')->get();
         $admin_roles = $admin->roles->pluck('name','id');
         return view('admin.Admins.edit_admin', compact('admin','admin_roles','roles'));
-        }    
+    }    
           
      public function storeAdminEdit(AdminEditRequest $request, $id){
-            $admin = Admin::find($id);
-            if(!$admin)
-            return redirect()->route('admin.show');
-            
-            $admin->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),]);
-            if($request->role){
-                $role = Role::find($request->role);
-                $admin->syncRoles([$request->role]);
-                }
-                return redirect()->back()->with(['success'=> trans('messages.saved_successfully')]);
-           }
+        $admin = Admin::find($id);
+        if(!$admin)
+        return redirect()->route('admin.show');
+      
+        $admin->update([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),]);
+        if($request->role){
+          $admin->syncRoles([$request->role]);
+          }
+          return redirect()->back()->with(['success'=> trans('messages.saved_successfully')]);
+     }
         
      public function deleteRole(Request $request){
             $role = Role::find($request->role);
             $admin = Admin::find($request->admin);
             $admin->removeRole($role);
             return back();
-        }
+     }
         
      public function deleteAmins($id){
         $admin = Admin::find($id);

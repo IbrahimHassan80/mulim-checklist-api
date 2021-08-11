@@ -1,7 +1,9 @@
 @extends('admin.layout.master')
+@section('title','Azkar Alnoom')
+
 @section('content')
 @section('title','Azkar Almasaa')
-  
+
   <table class="table table-bordered text-center">
     <thead class="thead-light">
         <tr>
@@ -20,5 +22,4 @@
         @endforeach
     </tbody>
   </table>
-
 @stop

@@ -23,14 +23,14 @@ class Questioncontroller extends Controller
                 ]);
         }
 
-                $data = Question::create([
-                        'question' => 'قراءة القران',
-                        'status'   => $request->status,
-                        'user_id'  => auth()->user()->id
-                    ]);
-                    if($data){
-                        return "good";
-                    }    
+          $data = Question::create([
+                  'question' => 'قراءة القران',
+                  'status'   => $request->status,
+                  'user_id'  => auth()->user()->id
+              ]);
+              if($data){
+                  return "good";
+              }    
         
     }
     public function memorizesQuran(Request $request){
@@ -39,20 +39,20 @@ class Questioncontroller extends Controller
         ];
         $validator = validator::make($request->all(), $rules);
         if($validator->fails()){
-                return response()->json([
-                    'message' => 'the given data was invalid',
-                    'errNum' => 500,
-                    'error' => $validator->errors(),
-                ]); 
-            }
-                $data = Question::create([
-                        'question' => 'حفظ من القرءان',
-                        'status'   => $request->status,
-                        'user_id'  => auth()->user()->id
-                    ]);
-             if($data){
-              return "good";
-              }    
+            return response()->json([
+                'message' => 'the given data was invalid',
+                'errNum' => 500,
+                'error' => $validator->errors(),
+            ]); 
+        }
+            $data = Question::create([
+                    'question' => 'حفظ من القرءان',
+                    'status'   => $request->status,
+                    'user_id'  => auth()->user()->id
+                ]);
+         if($data){
+          return "good";
+          }    
     }
 
     public function ablution(Request $request){
@@ -67,11 +67,11 @@ class Questioncontroller extends Controller
                     'error' => $validator->errors(),
                 ]); 
             }
-                $data = Question::create([
-                        'question' => 'هل قمت بالوضوء قبل النوم',
-                        'status'   => $request->status,
-                        'user_id'  => auth()->user()->id
-                    ]);
+             $data = Question::create([
+              'question' => 'هل قمت بالوضوء قبل النوم',
+              'status'   => $request->status,
+              'user_id'  => auth()->user()->id
+                 ]);
              if($data){
               return "good";
               }

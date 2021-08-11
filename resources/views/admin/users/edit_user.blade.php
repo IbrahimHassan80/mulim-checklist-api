@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('title','Edit User')
 @section('content')
 
 <form class="col-md-8" method="POST" action="{{route('store.edit.user',$user->id)}}">
