@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="{{ app()->getLocale() }}" dir="@if(App::isLocale('ar')){{'rtl'}}@else{{'ltr'}}@endif"
 
 <head>
     <meta charset="utf-8">
@@ -16,7 +16,11 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    @if(App::isLocale('ar'))
+    <link href="{{asset('admin-theme/css/ar-sb-admin-2.min.css')}}" rel="stylesheet">
+    @else
     <link href="{{asset('admin-theme/css/en-sb-admin-2.min.css')}}" rel="stylesheet">
+    @endif
 
 </head>
 
@@ -63,7 +67,6 @@
 
     </div>
     <!-- End of Page Wrapper -->
- 
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('admin-theme/vendor/jquery/jquery.min.js')}}"></script>

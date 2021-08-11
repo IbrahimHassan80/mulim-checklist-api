@@ -5,9 +5,9 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">name</th>
-        <th scope="col">email</th>
-        <th scope="col">operations</th>
+        <th scope="col">{{__('messages.name')}}</th>
+        <th scope="col">{{__('messages.email')}}</th>
+        <th scope="col">{{__('messages.operations')}}</th>
       </tr>
     </thead>
     <tbody>
@@ -17,7 +17,8 @@
         <td>{{$admin->name}}</td>
         <td>{{$admin->email}}</td>
         <td>
-            <a class="btn btn-danger" href="{{route('admin.delete', $admin->id)}}">Delete</a>
+            <a class="btn btn-danger" href="{{route('admin.delete', $admin->id)}}">{{__('messages.delete')}}</a>
+            <a class="btn btn-primary" href="{{route('admin.edit', $admin->id)}}">{{__('messages.edit')}}</a>
         </td>
       </tr>
      @endforeach

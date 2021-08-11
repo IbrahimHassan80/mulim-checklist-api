@@ -5,11 +5,11 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">first name</th>
-        <th scope="col">second name</th>
-        <th scope="col">email</th>
-        <th scope="col">mobile</th>
-        <th scope="col">operations</th>
+        <th scope="col">{{__('messages.first_name')}}</th>
+        <th scope="col">{{__('messages.second_name')}}</th>
+        <th scope="col">{{__('messages.email')}}</th>
+        <th scope="col">{{__('messages.mobile')}}</th>
+        <th scope="col">{{__('messages.operations')}}</th>
       </tr>
     </thead>
     <tbody>
@@ -21,7 +21,8 @@
         <td>{{$user->email}}</td>
         <td>{{$user->mobile}}</td>
         <td>
-            <a class="btn btn-danger" href="{{route('delete.user', $user->id)}}">Delete</a>
+            <a class="btn btn-danger" href="{{route('delete.user', $user->id)}}">{{__('messages.delete')}}</a>
+            <a class="btn btn-primary" href="{{route('edit.user', $user->id)}}">{{__('messages.edit')}}</a>
         </td>
       </tr>
      @endforeach

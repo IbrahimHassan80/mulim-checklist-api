@@ -60,4 +60,6 @@ Route::namespace('App\Http\Controllers\Resource')->group(function(){
     Route::post('contactus', "contactuscontroller@storeMessage")->name('admin.contactus');
     Route::post('logout-user-api', "authcontroller@logoutUser")->name('admin.logout.user.api');
     });
+
+    Route::post('getnotification', "WebNotificationController@sendNotification");
 });

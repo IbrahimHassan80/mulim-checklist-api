@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,11 +26,16 @@ Route::namespace('App\Http\Controllers\Admin')->group(function(){
       Route::post('store-admins', "AdminDashboardController@storeAdmin")->name('admin.store');
       Route::get ('show-admins', "AdminDashboardController@showaAmins")->name('admin.show');
       Route::get ('delete-admins/{id}', "AdminDashboardController@deleteAmins")->name('admin.delete');
+      Route::get ('edit-admins/{id}', "AdminDashboardController@editAmins")->name('admin.edit');
+      Route::put ('store-edit-admins/{id}', "AdminDashboardController@storeAdminEdit")->name('admin.store.edit');
+      Route::post ('delete-roles', "AdminDashboardController@deleteRole")->name('delete.role');
+      Route::get ('changela`ng/{locale}', "AdminDashboardController@changeLang")->name('changeLang');
       
       Route::get('add-user', "AdminDashboardController@addUser")->name('admin.add.user');
       Route::get('show-user', "AdminDashboardController@showusers")->name('show.user');
       Route::post('store-user', "AdminDashboardController@storeUser")->name('admin.store.user');
-      Route::post('storephoto', 'AdminDashboardController@storePhoto')->name('store.photo');
+      Route::get('edit-user/{id}', "AdminDashboardController@editUser")->name('edit.user');
+      Route::put('store-edit-user/{id}', "AdminDashboardController@storeEditUser")->name('store.edit.user');
       Route::get('delete/user/{id}', 'AdminDashboardController@deleteusers')->name('delete.user');
       
        // Alazkar //

@@ -5,10 +5,10 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Alsalah</th>
-        <th scope="col">Alfard</th>
-        <th scope="col">alsonna before</th>
-        <th scope="col">alsonna after</th>
+        <th scope="col">{{__('messages.alsalah')}}</th>
+        <th scope="col">{{__('messages.alfard')}}</th>
+        <th scope="col">{{__('messages.alsonna_before')}}</th>
+        <th scope="col">{{__('messages.alsonna_after')}}</th>
       </tr>
     </thead>
     <tbody>

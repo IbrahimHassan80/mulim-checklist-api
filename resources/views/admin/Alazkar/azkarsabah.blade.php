@@ -5,9 +5,9 @@
   <table class="table table-bordered text-center">
     <thead class="thead-light">
         <tr>
-            <th scope="col">العدد</th>
-            <th scope="col">العنوان</th>
-            <th scope="col">الذكر</th>
+          <th scope="col">{{__('messages.count')}}</th>
+          <th scope="col">{{__('messages.title')}}</th>
+          <th scope="col">{{__('messages.alzekr')}}</th>
         </tr>
     </thead>
     <tbody>

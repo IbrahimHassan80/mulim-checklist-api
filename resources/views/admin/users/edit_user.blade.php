@@ -1,11 +1,11 @@
 @extends('admin.layout.master')
 @section('content')
 
-<form class="col-md-8" method="POST" action="{{route('admin.store.user')}}">
-  @csrf  
+<form class="col-md-8" method="POST" action="{{route('store.edit.user',$user->id)}}">
+  @csrf @method('put') 
   <div class="mb-3">
       <label for="exampleInputfname" class="">{{__('messages.first_name')}}</label>
-      <input name="first_name" type="text" class="form-control" id="exampleInputfname">
+      <input value="{{$user->first_name}}" name="first_name" type="text" class="form-control" id="exampleInputfname">
       @error('first_name')
       <span class="text-danger">{{$message}} </span>
       @enderror
@@ -13,7 +13,7 @@
   
     <div class="mb-3">
       <label for="exampleInputsname" class="form-label">{{__('messages.second_name')}}</label>
-      <input name="second_name" type="text" class="form-control" id="exampleInputsname">
+      <input value="{{$user->second_name}}" name="second_name" type="text" class="form-control" id="exampleInputsname">
       @error('second_name')
       <span class="text-danger">{{$message}} </span>
       @enderror
@@ -21,7 +21,7 @@
     
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">{{__('messages.email')}}</label>
-      <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input value="{{$user->email}}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
       @error('email')
        <span class="text-danger">{{$message}} </span>
       @enderror
@@ -29,7 +29,7 @@
     
     <div class="mb-3">
       <label for="exampleInputphone" class="form-label">{{__('messages.mobile')}}</label>
-      <input name="mobile" type="text" class="form-control" id="exampleInputphone">
+      <input value="{{$user->mobile}}" name="mobile" type="text" class="form-control" id="exampleInputphone">
       @error('mobile')
        <span class="text-danger">{{$message}} </span>
       @enderror

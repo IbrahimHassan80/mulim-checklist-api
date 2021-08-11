@@ -24,11 +24,19 @@ class add_user_request extends FormRequest
     public function rules()
     {
         return [
-            'first_name'  => 'required|string|max:20',
-            'second_name' => 'required|string|max:20',
+            'first_name'  => 'required|string|max:30|string',
+            'second_name' => 'required|string|max:30|string',
             'email'       => 'required|email|unique:users,email',
             'mobile'      => 'required|numeric|unique:users,mobile',
             'password'    => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => trans('messages.required'),
+            'unique' => trans('messages.unique'),
         ];
     }
 }
